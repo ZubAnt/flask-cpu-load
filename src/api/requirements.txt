@@ -8,3 +8,4 @@ Flask-Caching
 flasgger
 injector
 python-dateutil
+statsd

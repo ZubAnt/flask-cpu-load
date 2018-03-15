@@ -3,19 +3,22 @@ from datetime import datetime, timedelta
 from injector import singleton, inject
 
 from cpu_loader.configs.timeout_configure import TimeoutConfigure
+from cpu_loader.controllers.stats_controller import StatsController
 
 
 @singleton
 class CpuLoaderService(object):
 
     @inject
-    def __init__(self, configure: TimeoutConfigure):
+    def __init__(self, configure: TimeoutConfigure, stats: StatsController):
+        self._stats = stats
         self._configure = configure
 
     def load(self) -> None:
         self._load(self._configure.default)
 
     def load_short(self) -> None:
+        self._stats.incr()
         self._load(self._configure.short)
 
     def load_mid(self) -> None:
