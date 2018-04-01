@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from time import sleep
 
 from injector import singleton, inject
 
@@ -34,6 +35,8 @@ class CpuLoaderService(object):
         delta = timedelta(milliseconds=timeout)
 
         while True:
+
+            sleep(timeout / 100)
 
             now = datetime.now()
             if now - start > delta:
