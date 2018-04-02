@@ -36,7 +36,7 @@ class CpuLoaderService(object):
 
         while True:
 
-            sleep(timeout / 100)
+            # sleep(timeout / 100)
 
             now = datetime.now()
             if now - start > delta:
